@@ -7,7 +7,19 @@
 
 // But instead we're going to implement it from scratch:
 var getElementsByClassName = function (className) {
-  return document.getElementsByClassName(className);
+  let result = [];
+  var testNode = function (node) {
+    if (node.classList && node.classList.contains(className)) {
+      result.push(node);
+    }
+    for (let i = 0; i < node.childNodes.length; i++) {
+      testNode(node.childNodes[i]);
+    }
+  };
+  console.log('I got here');
+
+  testNode(document.body);
+  return result;
 };
 
 /*

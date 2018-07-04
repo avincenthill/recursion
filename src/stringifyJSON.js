@@ -3,30 +3,43 @@
 
 // but you don't so you're going to write it from scratch:
 
+/*
+The JSON.stringify() method converts a JavaScript value to a JSON string, optionally replacing values if a replacer function is specified or optionally including only the specified properties if a replacer array is specified.
+console.log(JSON.stringify({ x: 5, y: 6 }));
+// expected output: "{"x":5,"y":6}"
+
+*/
+
 var stringifyJSON = function (obj) {
-  return JSON.stringify(obj);
+  // console.log(obj);
+  var results = [];
+
+  //terminating cases
+  if (typeof obj === '"undefined"') {
+    results.push('undefined');
+  } else if (typeof obj === 'string') {
+    results.push('"' + obj + '"');
+  } else if (typeof obj === 'boolean') {
+    results.push(String(obj));
+  } else if (typeof obj === 'number') {
+    results.push(String(obj));
+  } else if (obj === null) {
+    results.push('null');
+  } else if (typeof obj === 'object') {
+    // for (var key in obj) {
+    //   console.log(key);
+    //   results.push(key + stringifyJSON(obj[key]));
+    // }
+    results.push('[]');
+  }
+
+  // console.log('results= ' + results)
+  for (let i = 0; i < results.length; i++) {
+    return results[i];
+  }
 };
 
 /*
-// test cases are described in fixtures.js
-describe('stringifyJSON', function() {
-  it('should match the result of calling JSON.stringify', function() {
-
-    stringifiableObjects.forEach(function(test) {
-      var expected = JSON.stringify(test);
-      var result = stringifyJSON(test);
-      expect(result).to.equal(expected);
-    });
-
-    unstringifiableValues.forEach(function(obj) {
-      var expected = JSON.stringify(obj);
-      var result = stringifyJSON(obj);
-      expect(result).to.equal(expected);
-    });
-
-  });
-});
-
 var validStrings, invalidStrings, // used for stringifyJSON and parseJSON specs
   weirdObjects; // used for stringifyJSON spec
 
