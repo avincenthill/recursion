@@ -3,9 +3,11 @@
 //   return document.getElementsByClassName(className);
 // };
 
+//https://learn.makerpass.com/groups/hrsf102/courses/reactorcore/course.recursion
+
 // But instead we're going to implement it from scratch:
 var getElementsByClassName = function (className) {
-  // your code here
+  return document.getElementsByClassName(className);
 };
 
 /*
