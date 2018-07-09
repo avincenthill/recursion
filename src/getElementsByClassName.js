@@ -16,8 +16,6 @@ var getElementsByClassName = function (className) {
       testNode(node.childNodes[i]);
     }
   };
-  console.log('I got here');
-
   testNode(document.body);
   return result;
 };
